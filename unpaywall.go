@@ -31,8 +31,8 @@ type Unpaywall struct {
 //New returns a new unpaywall object to send requests to the API
 func New(email string) (*Unpaywall, error) {
 	//regex from https://www.w3.org/TR/html5/forms.html#valid-e-mail-address
-	regex := regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-	if !regex.MatchString(email) {
+	mailRegex := regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+	if !mailRegex.MatchString(email) {
 		return nil, errors.New("invalid email address")
 	}
 	cookieJar, _ := cookiejar.New(nil)
@@ -180,11 +180,8 @@ func (u *Unpaywall) DownloadByDOI(doi string, targetPath string) (string, error)
 	if err != nil {
 		return "", err
 	}
-	rand.Seed(time.Now().Unix())
 	targetFilename := generateRandomFilename()
-
 	cleanFilenameRegex := regexp.MustCompile(`\W`)
-
 	if res.Title != "" {
 		targetFilename = cleanFilenameRegex.ReplaceAllString(res.Title, "_")
 	}
