@@ -1,6 +1,6 @@
 # go-unpaywall
 
-[![GoDoc](https://godoc.org/github.com/JVecsei/go-unpaywall?status.svg)](https://godoc.org/github.com/JVecsei/go-unpaywall)
+[![GoDoc](https://godoc.org/github.com/JVecsei/go-unpaywall?status.svg)](https://godoc.org/github.com/JVecsei/go-unpaywall) [![Build Status](https://travis-ci.org/JVecsei/go-unpaywall.svg?branch=master)](https://travis-ci.org/JVecsei/go-unpaywall)
 
 Simple unofficial library to send requests to the unpaywall API ( http://unpaywall.org/products/api ) and automatically download documents. 
 
