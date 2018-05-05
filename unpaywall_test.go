@@ -5,7 +5,7 @@ import (
 	"log"
 	"testing"
 
-	unpaywall "github.com/jvecsei/go-unpaywall"
+	unpaywall "github.com/JVecsei/go-unpaywall"
 )
 
 func TestUnpaywall_RequestByDOI(t *testing.T) {

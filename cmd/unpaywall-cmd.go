@@ -4,7 +4,7 @@ import (
 	"flag"
 	"log"
 
-	unpaywall "github.com/jvecsei/go-unpaywall"
+	unpaywall "github.com/JVecsei/go-unpaywall"
 )
 
 func main() {
