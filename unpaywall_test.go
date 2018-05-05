@@ -3,9 +3,32 @@ package unpaywall_test
 import (
 	"fmt"
 	"log"
+	"testing"
 
 	unpaywall "github.com/jvecsei/go-unpaywall"
 )
+
+func TestUnpaywall_RequestByDOI(t *testing.T) {
+	// your email address
+	var email = "email@example.name"
+	// DOI
+	var doi = "10.1038/nature12373"
+	u, err := unpaywall.New(email)
+
+	if err != nil {
+		t.Error("Unpaywall instantiation should work but failed", err)
+	}
+
+	// Request example
+	result, err := u.RequestByDOI(doi)
+	if err != nil {
+		t.Error("Request to api failed", err)
+	}
+
+	if !result.IsOa || result.BestOaLocation.Version != "publishedVersion" {
+		t.Error("Expected result was IsOa=true and result.BestOaLocation.Version=publishedVersion but got", result.IsOa, result.BestOaLocation.Version)
+	}
+}
 
 func ExampleUnpaywall_RequestByDOI() {
 	// your email address
